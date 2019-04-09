@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class Kata {
+    public static int findShort(String s) 
+    {
+        int minLength = Integer.MAX_VALUE;
+        for(String i : s.split(" "))
+          if(i.length() < minLength) minLength = i.length();
+        return minLength;
+    }
+}
