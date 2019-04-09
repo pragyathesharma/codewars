@@ -1,0 +1,14 @@
+public class PigLatin {
+    public static String pigIt(String str) {
+        String output = "";
+
+        for(String s : str.split(" ")) 
+        {
+            if(s.length() >= 1 && (s.toLowerCase().charAt(0) > 96 && s.toLowerCase().charAt(0) < 123))
+                output += s.substring(1) + s.substring(0,1)+ "ay ";
+            else output += s+" ";
+        }
+        
+        return output.substring(0,output.length()-1);
+    }
+}
