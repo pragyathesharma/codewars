@@ -1,0 +1,34 @@
+import java.util.*;
+public class PeacefulYard {
+    public static boolean peacefulYard(String[] yard, int minDistance) 
+    {
+      HashMap<String, int[]> map = new HashMap<String, int[]>();
+      
+      for(int i = 0; i < yard.length; i++)
+      {
+        for(String s : new String[]{"L", "M", "R"})
+        {
+          if(yard[i].contains(s))
+              map.put(s, new int[] {i, yard[i].indexOf(s)});
+        }
+      }
+      if(map.size() == 1)
+        return true;
+      
+      for (String s1: map.keySet())
+      {
+          for (String s2: map.keySet())
+          {
+            if(!s1.equals(s2))
+            {
+              double distance = Math.sqrt(Math.pow(map.get(s1)[0] - map.get(s2)[0], 2) + Math.pow(map.get(s1)[1] - map.get(s2)[1], 2));
+              if(distance < minDistance)
+                return false;
+            }
+          }
+        }
+      
+      
+      return true;
+    }
+}
