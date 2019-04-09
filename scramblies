@@ -1,0 +1,25 @@
+import java.util.*;
+public class Scramblies {
+    public static boolean scramble(String str1, String str2) {
+        TreeMap<String, Integer> map = new TreeMap<String, Integer>();
+        for (int i = 0; i < str1.length(); i++)
+        {
+          String key = str1.charAt(i)+"";
+          if (!map.containsKey(key))
+            map.put (key, 0);
+          map.put(key, map.get(key)+1);
+        }
+       for (int i = 0; i < str2.length(); i++)
+       {
+          String key = str2.charAt(i)+"";
+          int count = 0;
+          if (map.containsKey(key))
+            count = map.get(key);
+          if (count == 0) 
+            return false;
+          count--;
+          map.put(key, count);
+        }
+        return true;
+    }
+}
