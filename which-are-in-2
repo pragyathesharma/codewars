@@ -1,0 +1,23 @@
+import java.util.*;
+public class WhichAreIn { 
+	
+	public static String[] inArray(String[] array1, String[] array2) {
+		TreeSet<String> set = new TreeSet<String>();
+    for(String s : array2)
+    {
+      for(String t : array1)
+      {
+        if(s.indexOf(t) >= 0)
+          set.add(t);
+      }
+    }
+    String[] answerSet = new String[set.size()];
+    int i = 0;
+    for(String s : set)
+    {
+      answerSet[i] = s;
+      i++;
+    }
+    return answerSet;
+	}
+}
