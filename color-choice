@@ -1,0 +1,13 @@
+public class Checkchoose {
+	
+    public static long checkchoose(long m, int n) {
+      long x = 1;
+      for(int i = 1; i <= n; i++) 
+      {
+        x = x * (n - i + 1) / i;
+        if(x == m) 
+          return i;
+      }
+      return -1;
+    }
+}
