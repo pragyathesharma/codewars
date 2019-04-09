@@ -1,0 +1,22 @@
+import java.util.*;
+import java.lang.*;
+ public class Kata {
+    public static double findUniq(double[] arr) {
+     TreeMap<Double, Integer> map = new TreeMap<Double, Integer>();
+     for(double d : arr)
+     {
+       if(!map.containsKey(d))
+         map.put(d, 0);
+       map.put(d, map.get(d)+1);
+     }
+     
+     Iterator it = map.keySet().iterator();
+    while(it.hasNext())
+    {
+       double key = (double)it.next();
+       if(map.get(key) == 1)
+         return key;
+     }
+     return 0;
+    }
+}
