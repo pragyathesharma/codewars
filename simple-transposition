@@ -1,0 +1,23 @@
+public class Kata {
+    public static String simpleTransposition(String text) {
+       String row1 = "";
+       String row2 = "";
+       int row = 1;
+       for(String s : text.split(""))
+       {
+         if(row == 1)
+         {
+           row1 += s;
+           row = 2;
+         }
+         else
+         {
+           row2 += s;
+           row = 1;
+         }
+       }
+       
+       
+       return row1+row2;
+    }
+}
