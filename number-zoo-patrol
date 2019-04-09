@@ -1,0 +1,10 @@
+public class NumberZooPatrol {
+
+    public static int findMissingNumber(int[] numbers) {
+      int num = numbers.length+1;
+      for(int i = 0; i < numbers.length; i++)
+          num += 1 + i - numbers[i];
+      return num;
+    }
+
+}
