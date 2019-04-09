@@ -1,0 +1,37 @@
+import java.util.*;
+public class Robot {
+  TreeSet<String> set;
+  public Robot()
+  {
+   set = new TreeSet<String>();
+   String[] known = "thank you for teaching me i already know the word i do not understand the input".split(" ");
+   for(String s : known)
+     set.add(s);
+  }
+  public String learnWord(String s)
+  { 
+    int oldSize = set.size();
+    if(isValid(s) && !s.equals(""))
+    {  
+      set.add(s.toLowerCase());
+      if(set.size()==oldSize)
+        return "I already know the word "+s;
+      return "Thank you for teaching me "+s;
+      
+    }
+    return "I do not understand the input";
+  }
+  
+  public boolean isValid(String n) 
+  {
+    char[] chars = n.toCharArray();
+    boolean allLetters = true;
+    for (char c : chars) 
+    {
+        if(!Character.isLetter(c))
+          allLetters = false;
+    }
+
+    return allLetters;
+}
+}
