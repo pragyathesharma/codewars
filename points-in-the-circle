@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Kata {
+    public static int pointsNumber(int radius)
+    {
+       int totalPoints = 0;
+       double rDist = radius;
+       for(int i = radius*(-1); i <= radius; i++)
+       {
+         for(int j = radius*(-1); j <= radius; j++)
+         {
+           if(distance(i, j, 0, 0) <= rDist)
+             totalPoints++;
+         }
+       }
+       return totalPoints;
+    }
+    
+    //DISTANCE FORMULA MEHTOD
+    public static double distance(int x1, int y1, int x2, int y2)
+    {
+      return Math.sqrt( ((x2-x1) * (x2-x1))+( (y2-y1) * (y2-y1)));
+    }
+}
