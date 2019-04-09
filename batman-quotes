@@ -1,0 +1,22 @@
+public class BatmanQuotes{
+  
+  public static String getQuote(String[] quotes, String hero){
+    String returnString = "";
+    int index = 0;
+    String name = "";
+    if(hero.charAt(0)=='B') 
+      name = "Batman: ";
+    if(hero.charAt(0)=='R') 
+      name = "Robin: ";
+    if(hero.charAt(0)=='J') 
+      name = "Joker: ";
+    for(int i = 0; i< hero.length(); i++)
+    {
+      if(hero.charAt(i)>=48 && hero.charAt(i)<=57)
+        index = ((int)hero.charAt(i))-48;
+    }
+    returnString = name+quotes[index];
+    return returnString;
+  }
+
+}
