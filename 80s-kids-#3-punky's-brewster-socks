@@ -1,0 +1,53 @@
+import java.util.*;
+public class EightiesKids3 {
+
+  public static String[] getSocks(String name, String[] socks) {
+    TreeMap<String, Integer> map = new TreeMap<String, Integer>();
+    ArrayList<String> sockList = new ArrayList<String>();
+
+    for(String s : socks)
+    {
+      if(!map.containsKey(s))
+        map.put(s, 0);
+      map.put(s, map.get(s)+1);
+    }
+    Iterator it = map.keySet().iterator();
+    while(it.hasNext())
+    {
+      String key = (String)it.next();
+      if(name.equals("Henry"))
+      {
+        if(map.get(key) >= 2)
+          sockList.add(key);
+      }
+      else sockList.add(key);
+    }
+    
+    String[] result = new String[0];
+    if(sockList.size()>0)
+    {
+      
+      if(name.equals("Henry")) 
+      {
+        String sockKey = sockList.get((int)(Math.random()*sockList.size()));
+        result = new String[2];
+        result[0] = sockKey;
+        result[1] = sockKey;
+        System.out.println(result[0]+" "+result[1]);
+      }
+      else
+      {
+          TreeSet<String> set = new TreeSet<String>(sockList);
+          sockList.clear();
+          sockList.addAll(set);
+          if(sockList.size()>1)
+          {
+            result = new String[2];
+            result[0] = sockList.remove((int)(Math.random()*sockList.size()));
+            result[1] = sockList.remove((int)(Math.random()*sockList.size()));
+          }
+      }
+    }
+    return result;
+  }
+}
