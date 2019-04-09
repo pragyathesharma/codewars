@@ -1,0 +1,40 @@
+public class Snail {
+    //start row, end row, start col, end col
+    public static int[] snail(int[][] array) {
+     int size = array.length;
+     if (array.length > 0 && array[0].length == 0) 
+            return new int[0];
+     int index = 0;
+     int[] result = new int[size*size];
+     int startRow = 0, startCol = 0, endRow = size-1, endCol = size-1;
+     while(startRow <= endRow && startCol <= endCol)
+     {
+       for(int col = startCol; col <= endCol; col++) // left to end
+       {
+         result[index] = array[startRow][col]; 
+         index++;
+       }
+       for(int row = startRow+1; row <= endRow; row++) // end to down
+       {
+         result[index] = array[row][endCol];
+         index++;
+       }
+       for(int col = endCol-1; col >= startCol; col--) //end to front
+       {
+         result[index] = array[endRow][col];
+         index++;
+       } 
+       for(int row = endRow-1; row > startRow; row--)
+       {
+         result[index] = array[row][startCol];
+         index++;
+       }
+       startRow++;
+       startCol++;
+       endRow--;
+       endCol--;
+     }
+   
+     return result;
+   } 
+}
