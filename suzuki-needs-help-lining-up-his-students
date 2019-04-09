@@ -1,0 +1,32 @@
+public class Kata
+{
+  public static String[] lineupStudents(String students)
+    {     
+      String[] a = students.split(" ");
+      for (int i = 1; i < a.length; i++ ) 
+      {
+        int j = i;
+        while ( j > 0 && a[j].compareTo(a[j-1])>0) 
+        {
+          String temp = a[j];
+          a[j] = a[j-1];
+          a[j-1] = temp;
+          j--;
+        }
+      }      
+      for (int i = 1; i < a.length; i++ ) 
+      {
+        int j = i;
+        while ( j > 0 && a[j].length() > a[j-1].length()) 
+        {
+          String temp = a[j];
+          a[j] = a[j-1];
+          a[j-1] = temp;
+          j--;
+        }
+      }
+
+      return a;
+    }
+    
+}
