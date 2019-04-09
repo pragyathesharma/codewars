@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+public class Travel {
+    public static String travel(String r, String zipcode) {
+      String[] a = r.split(",");
+      String number = "";
+      String address = "";
+      String street = "";
+      String town = "";
+      ArrayList<String> list = new ArrayList<String>();
+      ArrayList<String> list2 = new ArrayList<String>();
+      for(int i = 0; i< a.length; i++)
+      {
+        String c = a[i];
+        if(c.substring(c.length()-8).equals(zipcode))
+        {
+
+          list2.add(c.substring(0,c.indexOf(" ")) );
+          street = c.substring(c.indexOf(" ")+1, c.length()-9) ;
+          list.add(street);
+        }
+      }
+      address = zipcode+":";
+
+       for(int i = 0; i< list.size(); i++)
+        {
+          if(i<list.size()-1)
+           address+=list.get(i)+",";
+          else address+=list.get(i);
+        }
+        address +="/";
+       for(int i = 0; i<list2.size(); i++)
+       {
+          if(i<list2.size()-1)
+           address+=list2.get(i)+",";
+          else address+=list2.get(i);
+       }
+
+      
+      
+      return address;
+    }
+}
