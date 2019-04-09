@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class ObservedPin {
+  
+    public static List<String> getPINs(String observed) 
+    {
+        List<List<String>> combos = new ArrayList<>();
+
+        for (int i = 0; i < observed.length(); i++) 
+            combos.add(adjacentNumbers(observed.charAt(i)));
+        List<String> list = combos.get(0);
+
+        if (combos.size() == 1)
+            return combos.get(0);
+
+        
+        for (int i = 1; i < combos.size(); i++) 
+        {
+            List<String> temp = new ArrayList<String>();
+
+            for (String c : list) 
+            for (String s : combos.get(i)) 
+               temp.add(c+s);
+            list = temp;
+        }
+        return list;
+    }
+
+    public static List<String> adjacentNumbers(char c)
+    {
+      int n = Integer.parseInt(c+"");
+      if(n==1)
+        return Arrays.asList("124".split(""));
+      if(n==2)
+        return Arrays.asList("1235".split(""));
+      if(n==3)
+        return Arrays.asList("236".split(""));
+      if(n==4)
+        return Arrays.asList("1457".split(""));
+      if(n==5)
+        return Arrays.asList("24568".split(""));
+      if(n==6)
+        return Arrays.asList("3569".split(""));
+      if(n==7)
+        return Arrays.asList("478".split(""));
+      if(n==8)
+        return Arrays.asList("57890".split(""));
+      if(n==9)
+        return Arrays.asList("689".split(""));
+      if(n==0)
+        return Arrays.asList("80".split(""));
+      return null;
+    }
+    
+ 
+} 
