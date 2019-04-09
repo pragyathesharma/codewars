@@ -1,0 +1,16 @@
+import java.util.*;
+public class PangramChecker {
+  public boolean check(String sentence){
+    TreeSet<String> letters = new TreeSet<String>();
+    for(int i = 0; i < sentence.length(); i++)
+    {
+      char c = sentence.charAt(i);
+      if((c>=97 && c<=122) || (c>=65 && c<=90))
+        letters.add((c+"").toLowerCase());
+    }
+    System.out.println(letters.size());
+    if(letters.size()>=26)
+      return true;
+    return false;
+  }
+}
