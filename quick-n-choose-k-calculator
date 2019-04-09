@@ -1,0 +1,19 @@
+import java.math.BigInteger;
+
+class QuickCalc {
+	static BigInteger zero = BigInteger.ZERO, one = BigInteger.ONE;
+	public static BigInteger choose(int n, int k) {
+    BigInteger bigN = BigInteger.valueOf(n);
+    BigInteger bigK = BigInteger.valueOf(k);
+    if(k>n)
+      return zero;
+    return fact(bigN).divide(fact(bigK).multiply(fact(bigN.subtract(bigK))));
+	}
+  
+  public static BigInteger fact(BigInteger n)
+  {
+       if(n.equals(zero) || n.equals(one))
+         return one;
+       return fact(n.subtract(one)).multiply(n);
+  }
+}
