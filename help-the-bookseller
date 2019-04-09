@@ -1,0 +1,37 @@
+import java.util.*;
+public class StockList { 
+	
+  // 1st parameter is the stocklist (L in example), 
+	// 2nd parameter is list of categories (M in example)
+	public static String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
+  HashMap<String, Integer> map = new HashMap<String, Integer>();
+   for (String s: lstOf1stLetter)
+   {
+    map.put(s, 0);
+    for (int i = 0; i < lstOfArt.length; i++)
+    {    
+      String key = lstOfArt[i].charAt(0) + "";
+      int value = Integer.parseInt(lstOfArt[i].split(" ")[1]);
+      if (key.equals(s))
+				map.put(key, map.get(key)+value);
+    }
+  }
+  
+    String output = "";
+    boolean in = false;
+    if (map.size() == 0)
+      return output;
+    Iterator it = map.keySet().iterator();
+    while (it.hasNext())
+    {
+      String key = (String) it.next(); 
+      if (map.get(key) > 0)
+        in = true;
+      output += "("+key+" : " + map.get(key) + ") - ";
+    }
+    output = output.substring(0, output.length() - 3);
+		if (!in)
+      return "";
+    return output;
+	}
+}  
