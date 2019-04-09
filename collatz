@@ -1,0 +1,18 @@
+public class Collatz {
+  static String sequence;
+  public static String collatz(int n) {
+    sequence = "";
+    collatzing(n);
+    return sequence.substring(0, sequence.length()-2);
+  }
+  
+  public static int collatzing(int n)
+  {
+    sequence+= n+"->";
+    if(n==1)
+      return n;
+    if(n%2==0)
+      return collatzing(n/2);
+    return collatzing((n*3) +1);
+  }
+}
