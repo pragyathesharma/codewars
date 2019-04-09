@@ -1,0 +1,18 @@
+public class Solution {
+
+    public static String camelCase(String str) 
+    {
+        String output = "";
+        if(str.equals(""))
+          return output;
+        for(String s : str.split(" "))
+        {
+          if(!s.equals(""))
+            output += s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
+        }
+        return output;
+        
+      
+    }
+
+}
