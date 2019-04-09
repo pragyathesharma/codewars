@@ -1,0 +1,11 @@
+import java.math.*;
+public class Multiplier {
+  public static long multiply(long a, long b) {
+    BigInteger bigA = BigInteger.valueOf(a);
+    BigInteger bigB = BigInteger.valueOf(b);
+    bigA = bigA.multiply(bigB);
+    if(bigA.longValueExact() <= Long.MAX_VALUE && bigA.longValue() >= Long.MIN_VALUE) 
+        return bigA.longValue();
+    else throw new ArithmeticException();
+  }
+}
