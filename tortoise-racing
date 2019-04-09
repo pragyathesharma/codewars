@@ -1,0 +1,8 @@
+public class Tortoise {
+    public static int[] race(int v1, int v2, int g) {
+        if(v1 >= v2)
+          return null;
+        int t =  g*3600 / (v2-v1);
+        return new int[]{t/3600, (t%3600)/60, t%60};
+    }
+}
