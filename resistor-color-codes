@@ -1,0 +1,83 @@
+import java.util.ArrayList;
+public class DecodeResistorColors {
+    public static String decodeResistorColors(String bands) {
+
+       ArrayList<Integer> ohms=new ArrayList<Integer>();
+
+       String tolerance = "20%";
+       String state = "";
+       int start = 0;
+       int power = 0;
+       int bandno = 1;
+       
+       while(bands.length()>0)
+       {
+
+         
+          String check = bands.substring(0,3);
+          switch(check)
+          {
+            case "bla": ohms.add(0);
+                        
+              break;
+            case "bro": ohms.add(1);
+                        
+              break;
+            case "red": ohms.add(2);
+                        
+              break;
+            case "ora": ohms.add(3);
+                        
+              break;
+            case "yel": ohms.add(4);
+                        
+              break;
+            case "gre": ohms.add(5);
+                        
+              break;
+            case "blu": ohms.add(6); 
+                        
+              break;
+            case "vio": ohms.add(7);
+              break;
+            case "gra": ohms.add(8);
+              break;
+            case "whi": ohms.add(9);
+              break;     
+            case "gol": tolerance = "5%";
+              break;  
+            case "sil": tolerance = "10%";
+              break;   
+              
+          }//switch
+ 
+        if(bands.indexOf(" ")>=0)
+           bands = bands.substring(bands.indexOf(" ")+1);
+        else bands="";
+       }//while
+
+
+       System.out.println(bands+" "+ohms);
+      
+      ohms.set(0, ohms.get(0)*10);
+      double ohmvalue = ohms.get(0)+ohms.get(1);
+      System.out.println(ohmvalue);
+      ohmvalue = ohmvalue*(int)(Math.pow(10, ohms.get(2)));
+       System.out.println(ohmvalue);
+       
+       if(ohmvalue<1000)
+         return (int)ohmvalue+" ohms, "+tolerance;
+       if(ohmvalue<1000000 && ohmvalue>=1000)
+       {
+        ohmvalue/=1000;
+        if(ohmvalue%1==0)
+          return (int)ohmvalue+"k ohms, "+tolerance;  
+        return (ohmvalue)+"k ohms, "+tolerance;
+        }
+       ohmvalue/=1000000;
+       if(ohmvalue%1==0)
+          return (int)ohmvalue+"M ohms, "+tolerance;  
+        return (ohmvalue)+"M ohms, "+tolerance;
+       
+    }
+}
