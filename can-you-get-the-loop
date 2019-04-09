@@ -1,0 +1,14 @@
+import java.util.*;
+public class LoopInspector {
+
+  public int loopSize(Node node) {
+    ArrayList<Node> list = new ArrayList<>();
+    while(node != null && !list.contains(node)) 
+    {
+        list.add(node);
+        node = node.getNext();
+    }
+    return list.size()-list.indexOf(node);
+  }
+
+}
