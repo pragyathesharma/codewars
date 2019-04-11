@@ -1,0 +1,39 @@
+import java.util.*;
+class Meeting {
+    
+    public static String meeting(String s) 
+    {
+      ArrayList<Name> list = new ArrayList<>();
+      for(String full : s.split(";"))
+      {
+        String[] parts = full.split(":");
+        list.add(new Name(parts[1], parts[0]));
+      }
+      Collections.sort(list);
+      String result = "";
+      for(Name n : list) result+=n;
+      return result;
+      
+    }
+    
+    static class Name implements Comparable<Name>
+    {
+      String last, first;
+      public Name(String last, String first)
+      {
+         this.last = last.toUpperCase();
+         this.first = first.toUpperCase();
+      }
+      public String getLast(){return last;}
+      public String getFirst(){return first;}
+      public int compareTo(Name n)
+      {
+        if(last.compareTo(n.getLast())!=0)
+          return last.compareTo(n.getLast());
+        if(first.compareTo(n.getFirst())!=0)
+          return first.compareTo(n.getFirst());
+        return 0;
+      }
+      public String toString(){return "("+last+", "+first+")";}
+    }
+}
