@@ -1,0 +1,38 @@
+import java.util.*;
+public class DirReduction {
+    static String n = "NORTH", s = "SOUTH", e= "EAST", w = "WEST";
+    public static String[] dirReduc(String[] a) 
+    {
+      Stack<String> stack = new Stack<>();
+      for (String st : a) 
+      {
+        if (stack.size() > 0) 
+        {
+        
+          if(st==n)
+          {
+            if(stack.peek()==s) stack.pop();
+            else stack.push(st);
+          }
+          if(st==s)
+          {
+            if(stack.peek()==n) stack.pop();
+            else stack.push(st);
+          }
+          if(st==e)
+          {
+            if(stack.peek()==w) stack.pop();
+            else stack.push(st);
+          }
+          if(st==w)
+          {
+            if(stack.peek()==e) stack.pop();
+            else stack.push(st);
+          }
+          
+        }
+        else stack.push(st);
+      }
+      return stack.toArray(new String[stack.size()]);
+    }
+}
