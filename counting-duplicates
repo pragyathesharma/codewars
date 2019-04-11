@@ -1,0 +1,20 @@
+import java.util.*;
+public class CountingDuplicates {
+  public static int duplicateCount(String text) {
+    HashMap<String, Integer> counts = new HashMap<>();
+    
+    for(int i =0; i < text.length(); i++)
+    {
+      String key = (text.charAt(i)+"").toLowerCase();
+      if(!counts.containsKey(key)) counts.put(key, 0);
+      counts.put(key, counts.get(key)+1);
+    }
+    
+    int total = 0;
+    Iterator it = counts.keySet().iterator();
+    while(it.hasNext())
+      if(counts.get((String)it.next()) > 1) total++;
+    
+    return total;
+  }
+}
